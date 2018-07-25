@@ -1,0 +1,983 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{97F2EE42-6A02-432E-AEDE-DD1768489FF9}</ProjectGuid>
+        <ProjectVersion>18.4</ProjectVersion>
+        <FrameworkType>None</FrameworkType>
+        <MainSource>CEF4CPPBuilder.cpp</MainSource>
+        <Base>True</Base>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Package</AppType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='OSX32' and '$(Base)'=='true') or '$(Base_OSX32)'!=''">
+        <Base_OSX32>true</Base_OSX32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+        <DynamicRTL>true</DynamicRTL>
+        <UsePackages>true</UsePackages>
+        <IntermediateOutputDir>.\$(Platform)\$(Config)</IntermediateOutputDir>
+        <BCC_wpar>false</BCC_wpar>
+        <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+        <BCC_ExtendedErrorInfo>true</BCC_ExtendedErrorInfo>
+        <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\release\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+        <ProjectType>CppPackage</ProjectType>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <ILINK_GenerateImportLibrary>true</ILINK_GenerateImportLibrary>
+        <ILINK_GenerateLibFile>true</ILINK_GenerateLibFile>
+        <_TCHARMapping>char</_TCHARMapping>
+        <Multithreaded>true</Multithreaded>
+        <IncludePath>..\source\;P:\libs\CEF4Delphi\packages\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>..\source\;P:\libs\CEF4Delphi\packages\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <SanitizedProjectName>CEF4CPPBuilder</SanitizedProjectName>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_OSX32)'!=''">
+        <PackageImports>bindcomp;bindcompdbx;bindcompfmx;bindengine;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapxml;FireDACCommonODBC;FireDACMySQLDriver;FireDACPgDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibmonitor;ibxbindings;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inetdb;inetdbxpress;rtl;tethering;xmlrtl;$(PackageImports)</PackageImports>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <PackageImports>adortl;appanalytics;atVCLComponents;atVCLDataModules;atVCLVisualComponents;bcbie;bcbsmp;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DbxDevartPostgreSQLDriver250;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;DcefBrowser;dslVCLComponents;dslVCLVisualComponents;dsnap;dsnapcon;dsnapxml;FireDACADSDriver;FireDACCommonODBC;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibmonitor;ibxbindings;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inetdb;inetdbxpress;Intraweb;RaizeComponentsVcl;RaizeComponentsVclDb;rtl;sbridge250;svn;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <BT_BuildType>Debug</BT_BuildType>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <PackageImports>adortl;appanalytics;bindcomp;bindcompdbx;bindcompfmx;bindcompvcl;bindengine;CustomIPTransport;dbexpress;dbrtl;dbxcds;DbxClientDriver;DbxCommonDriver;DBXInterBaseDriver;DBXMySQLDriver;DBXSqliteDriver;dsnap;dsnapcon;dsnapxml;FireDACADSDriver;FireDACCommonODBC;FireDACMSAccDriver;FireDACMySQLDriver;FireDACPgDriver;fmx;fmxase;fmxdae;fmxFireDAC;fmxobj;FMXTee;FmxTeeUI;ibmonitor;ibxbindings;ibxpress;IndyCore;IndyIPClient;IndyIPCommon;IndyIPServer;IndyProtocols;IndySystem;inetdb;inetdbxpress;Intraweb;RaizeComponentsVcl;RaizeComponentsVclDb;rtl;Tee;TeeDB;TeeUI;tethering;vcl;vclactnband;vcldb;vcldsnap;vclFireDAC;vclib;vclie;vclimg;VCLRESTComponents;VclSmp;vcltouch;vclwinx;vclx;xmlrtl;$(PackageImports)</PackageImports>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+        <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <Defines>_DEBUG;$(Defines)</Defines>
+        <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+        <BCC_UseRegisterVariables>None</BCC_UseRegisterVariables>
+        <DCC_Define>DEBUG</DCC_Define>
+        <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+        <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+        <BCC_StackFrames>true</BCC_StackFrames>
+        <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+        <TASM_Debugging>Full</TASM_Debugging>
+        <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+        <BCC_EnableCPPExceptions>true</BCC_EnableCPPExceptions>
+        <BCC_DisableFramePtrElimOpt>true</BCC_DisableFramePtrElimOpt>
+        <BCC_DisableSpellChecking>true</BCC_DisableSpellChecking>
+        <CLANG_UnwindTables>true</CLANG_UnwindTables>
+        <ILINK_LibraryPath>$(BDSLIB)\$(PLATFORM)\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <Defines>NDEBUG;$(Defines)</Defines>
+        <TASM_Debugging>None</TASM_Debugging>
+    </PropertyGroup>
+    <ItemGroup>
+        <CppCompile Include="CEF4CPPBuilder.cpp">
+            <BuildOrder>0</BuildOrder>
+        </CppCompile>
+        <PCHCompile Include="CEF4CPPBuilderPCH1.h">
+            <BuildOrder>2</BuildOrder>
+            <PCH>true</PCH>
+        </PCHCompile>
+        <DelphiCompile Include="CEF4Delphi_Register.pas">
+            <BuildOrder>133</BuildOrder>
+        </DelphiCompile>
+        <ResFiles Include="res\chromium.dcr">
+            <BuildOrder>132</BuildOrder>
+        </ResFiles>
+        <PackageImport Include="rtl.bpi">
+            <BuildOrder>1</BuildOrder>
+        </PackageImport>
+        <DelphiCompile Include="..\source\uBufferPanel.pas">
+            <BuildOrder>25</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFAccessibilityHandler.pas">
+            <BuildOrder>26</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFApp.pas">
+            <BuildOrder>27</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFApplication.pas">
+            <BuildOrder>28</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFAuthCallback.pas">
+            <BuildOrder>29</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFBaseRefCounted.pas">
+            <BuildOrder>30</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFBaseScopedWrapper.pas">
+            <BuildOrder>31</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFBeforeDownloadCallback.pas">
+            <BuildOrder>32</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFBinaryValue.pas">
+            <BuildOrder>33</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFBrowser.pas">
+            <BuildOrder>34</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFBrowserProcessHandler.pas">
+            <BuildOrder>35</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFCallback.pas">
+            <BuildOrder>36</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFChromium.pas">
+            <BuildOrder>37</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFChromiumEvents.pas">
+            <BuildOrder>38</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFChromiumFontOptions.pas">
+            <BuildOrder>39</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFChromiumOptions.pas">
+            <BuildOrder>40</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFChromiumWindow.pas">
+            <BuildOrder>41</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFClient.pas">
+            <BuildOrder>42</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFCommandLine.pas">
+            <BuildOrder>43</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFCompletionCallback.pas">
+            <BuildOrder>44</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFConstants.pas">
+            <BuildOrder>45</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFContextMenuHandler.pas">
+            <BuildOrder>46</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFContextMenuParams.pas">
+            <BuildOrder>47</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFCookieManager.pas">
+            <BuildOrder>48</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFCookieVisitor.pas">
+            <BuildOrder>49</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFCustomStreamReader.pas">
+            <BuildOrder>50</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDeleteCookiesCallback.pas">
+            <BuildOrder>51</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDialogHandler.pas">
+            <BuildOrder>52</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDictionaryValue.pas">
+            <BuildOrder>53</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDisplayHandler.pas">
+            <BuildOrder>54</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDomDocument.pas">
+            <BuildOrder>55</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDomNode.pas">
+            <BuildOrder>56</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDomVisitor.pas">
+            <BuildOrder>57</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDownloadHandler.pas">
+            <BuildOrder>58</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDownloadImageCallBack.pas">
+            <BuildOrder>59</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDownLoadItem.pas">
+            <BuildOrder>60</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDownloadItemCallback.pas">
+            <BuildOrder>61</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDragAndDropMgr.pas">
+            <BuildOrder>62</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDragData.pas">
+            <BuildOrder>63</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFDragHandler.pas">
+            <BuildOrder>64</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFEndTracingCallback.pas">
+            <BuildOrder>65</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFExtension.pas">
+            <BuildOrder>66</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFExtensionHandler.pas">
+            <BuildOrder>67</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFFileDialogCallback.pas">
+            <BuildOrder>68</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFFindHandler.pas">
+            <BuildOrder>69</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFFocusHandler.pas">
+            <BuildOrder>70</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFFrame.pas">
+            <BuildOrder>71</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFGetExtensionResourceCallback.pas">
+            <BuildOrder>72</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFImage.pas">
+            <BuildOrder>73</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFInterfaces.pas">
+            <BuildOrder>74</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFJsDialogCallback.pas">
+            <BuildOrder>75</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFJsDialogHandler.pas">
+            <BuildOrder>76</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFKeyboardHandler.pas">
+            <BuildOrder>77</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFLibFunctions.pas">
+            <BuildOrder>78</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFLifeSpanHandler.pas">
+            <BuildOrder>79</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFListValue.pas">
+            <BuildOrder>80</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFLoadHandler.pas">
+            <BuildOrder>81</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFMenuModel.pas">
+            <BuildOrder>82</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFMenuModelDelegate.pas">
+            <BuildOrder>83</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFMiscFunctions.pas">
+            <BuildOrder>84</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFNavigationEntry.pas">
+            <BuildOrder>85</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFNavigationEntryVisitor.pas">
+            <BuildOrder>86</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFPDFPrintCallback.pas">
+            <BuildOrder>87</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFPDFPrintOptions.pas">
+            <BuildOrder>88</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFPostData.pas">
+            <BuildOrder>89</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFPostDataElement.pas">
+            <BuildOrder>90</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFPrintSettings.pas">
+            <BuildOrder>91</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFProcessMessage.pas">
+            <BuildOrder>92</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRegisterCDMCallback.pas">
+            <BuildOrder>93</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRenderHandler.pas">
+            <BuildOrder>94</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRenderProcessHandler.pas">
+            <BuildOrder>95</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRequest.pas">
+            <BuildOrder>96</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRequestCallback.pas">
+            <BuildOrder>97</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRequestContext.pas">
+            <BuildOrder>98</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRequestContextHandler.pas">
+            <BuildOrder>99</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRequestHandler.pas">
+            <BuildOrder>100</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFResolveCallback.pas">
+            <BuildOrder>101</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFResourceBundle.pas">
+            <BuildOrder>102</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFResourceBundleHandler.pas">
+            <BuildOrder>103</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFResourceHandler.pas">
+            <BuildOrder>104</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFResponse.pas">
+            <BuildOrder>105</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFResponseFilter.pas">
+            <BuildOrder>106</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRunContextMenuCallback.pas">
+            <BuildOrder>107</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFRunFileDialogCallback.pas">
+            <BuildOrder>108</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFSchemeHandlerFactory.pas">
+            <BuildOrder>109</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFSchemeRegistrar.pas">
+            <BuildOrder>110</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFSelectClientCertificateCallback.pas">
+            <BuildOrder>111</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFServer.pas">
+            <BuildOrder>112</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFServerComponent.pas">
+            <BuildOrder>113</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFServerEvents.pas">
+            <BuildOrder>114</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFServerHandler.pas">
+            <BuildOrder>115</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFSetCookieCallback.pas">
+            <BuildOrder>116</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFSslInfo.pas">
+            <BuildOrder>117</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFSSLStatus.pas">
+            <BuildOrder>118</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFStreamReader.pas">
+            <BuildOrder>119</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFStreamWriter.pas">
+            <BuildOrder>120</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFStringList.pas">
+            <BuildOrder>121</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFStringMap.pas">
+            <BuildOrder>122</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFStringMultimap.pas">
+            <BuildOrder>123</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFStringVisitor.pas">
+            <BuildOrder>124</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFTask.pas">
+            <BuildOrder>125</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFTaskRunner.pas">
+            <BuildOrder>126</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFThread.pas">
+            <BuildOrder>127</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFTypes.pas">
+            <BuildOrder>128</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFUrlRequest.pas">
+            <BuildOrder>129</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFUrlrequestClient.pas">
+            <BuildOrder>130</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFv8Accessor.pas">
+            <BuildOrder>131</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFv8ArrayBufferReleaseCallback.pas">
+            <BuildOrder>132</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFv8Context.pas">
+            <BuildOrder>133</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFV8Exception.pas">
+            <BuildOrder>134</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFv8Handler.pas">
+            <BuildOrder>135</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFv8Interceptor.pas">
+            <BuildOrder>3</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFv8StackFrame.pas">
+            <BuildOrder>4</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFv8StackTrace.pas">
+            <BuildOrder>5</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFv8Value.pas">
+            <BuildOrder>6</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFValue.pas">
+            <BuildOrder>7</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFWaitableEvent.pas">
+            <BuildOrder>8</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFWebPluginInfo.pas">
+            <BuildOrder>9</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFWebPluginInfoVisitor.pas">
+            <BuildOrder>10</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFWebPluginUnstableCallback.pas">
+            <BuildOrder>11</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFWindowParent.pas">
+            <BuildOrder>12</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFWorkScheduler.pas">
+            <BuildOrder>13</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFWorkSchedulerThread.pas">
+            <BuildOrder>14</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFWriteHandler.pas">
+            <BuildOrder>15</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFX509Certificate.pas">
+            <BuildOrder>16</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFX509CertPrincipal.pas">
+            <BuildOrder>17</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFXmlReader.pas">
+            <BuildOrder>18</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uCEFZipReader.pas">
+            <BuildOrder>19</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="..\source\uOLEDragAndDrop.pas">
+            <BuildOrder>24</BuildOrder>
+        </DelphiCompile>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+        <Borland.ProjectType>CppPackage</Borland.ProjectType>
+        <BorlandProject>
+            <CPlusPlusBuilder.Personality>
+                <Source>
+                    <Source Name="MainSource">CEF4CPPBuilder.cpp</Source>
+                </Source>
+                <ProjectProperties>
+                    <ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+                    <ProjectProperties Name="ManagePaths">True</ProjectProperties>
+                    <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+                    <ProjectProperties Name="IndexFiles">False</ProjectProperties>
+                </ProjectProperties>
+            </CPlusPlusBuilder.Personality>
+            <Deployment Version="3">
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c250.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="p:\build\BPL\CEF4CPPBuilder.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>CEF4CPPBuilder.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libPCRE.dylib" Class="DependencyModule">
+                    <Platform Name="iOSSimulator">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="p:\build\BPL\CEF4CPPBuilder.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>CEF4CPPBuilder.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployClass Name="AdditionalDebugSymbols">
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidClassesDexFile">
+                    <Platform Name="Android">
+                        <RemoteDir>classes</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidServiceOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashImageDef">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStyles">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_DefaultAppIcon">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon144">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon48">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon96">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage426">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-small</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-normal</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage640">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-large</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage960">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xlarge</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyFramework">
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="DependencyPackage">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="File">
+                    <Platform Name="Android">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1024">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1536">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch2048">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch768">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch320">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640x1136">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectAndroidManifest">
+                    <Platform Name="Android">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
+                <DeployClass Name="ProjectiOSEntitlements"/>
+                <DeployClass Name="ProjectiOSInfoPList"/>
+                <DeployClass Name="ProjectiOSResource">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements"/>
+                <DeployClass Name="ProjectOSXInfoPList"/>
+                <DeployClass Name="ProjectOSXResource">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Linux64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectUWPManifest">
+                    <Platform Name="Win32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_CppLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_CppLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+            </Deployment>
+            <Platforms>
+                <Platform value="OSX32">False</Platform>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+</Project>
